@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Персонаж</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        .accordion {
+            background-color: #eee444;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+            width: 50%;
+
+        }
+
+        .active, .accordion:hover {
+            background-color: #ccc999;
+            width: 50%;
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: green;
+            overflow: hidden;
+            width: 50%;
+        }
+    </style>
+
+</head>
+<body style="background-color: #9990FF">
+<h2>Типовые персонажи</h2>
+<button class="accordion" data-toggle="tooltip" title="Список персонажей">Посмотреть список</button>
+<div class="panel">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="tooltip">
+            <div class="w-100">
+                <img  class="_2DqrS DQzWH" data-test="IMAGE"
+                        src="pers.png">
+            </div>
+            <p class="mb-1">Характеристики <br/>
+                Имя: Илуми<br/>
+                Раса: Человек<br/>
+                Класс: Воин<br/>
+                Возраст: 19 лет<br/>
+            </p>
+
+        </a>
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="tooltip">
+            <div class="w-100">
+                <img  class="_2DqrS DQzWH" data-test="IMAGE"
+                      src="pers.png">
+            </div>
+
+            <p class="mb-1">Характеристики <br/>
+                Имя: Равиол<br/>
+                Раса: Дворф<br/>
+                Класс: Стрелок<br/>
+                Возраст: 44 года<br/>
+            </p>
+
+        </a>
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="tooltip">
+            <div class="w-100">
+                <img  class="_2DqrS DQzWH" data-test="IMAGE"
+                      src="pers.png">
+            </div>
+            <p class="mb-1">Характеристики <br/>
+                Имя: Элфхейм<br/>
+                Раса: Эльф<br/>
+                Класс: Маг<br/>
+                Возраст: 409 лет<br/>
+            </p>
+        </a>
+    </div>
+</div>
+<br>
+<br>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Создать персонажа</button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Имя:</label>
+                        <input type="text" class="form-control" id="recipient-name"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Раса</label>
+                        <select class="form-control" id="select-id" onchange="">
+                            <option value="one">Человек</option>
+                            <option value="two">Эльф</option>
+                            <option value="three">Дворф</option>
+                            <option value="four">Гном</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Класс</label>
+                        <select class="form-control" id="select-id2" onchange="">
+                            <option value="one">Воин</option>
+                            <option value="two">Стрелок</option>
+                            <option value="three">Маг</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Дата рождения:</label>
+                        <input type="date" class="col-form-label" id="date-id" onchange="get_current_age()"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Возраст:</label>
+                        <input class="col-form-label" id="eag-id" disabled="disabled" accept="false"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="create()">Создать</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="list-group">
+
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var modal = $(this)
+            modal.find('.modal-title').text('Окно создания персонажа ')
+        })
+
+        var checkbox = document.body.children[0];
+
+        function create(){
+            alert("Вы создали персонажа")
+        }
+
+        function get_current_age() {
+            var date = document.getElementById("date-id").value
+                document.getElementById("eag-id").value= ((new Date().getTime() - new Date(date)) / (24 * 3600 * 365.25 * 1000)) | 0;
+        }
+    </script>
+
+
+
+
+
+</div>
+</body>
+</html>
